@@ -1,0 +1,25 @@
+---
+export interface Props {
+    title: string;
+    date: string;
+    description: string;
+}
+
+const { title, date, description } = Astro.props;
+---
+
+<div
+    class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"
+>
+</div>
+<time
+    class="mb-1 lg:text-sm md:text-sm sm:text-xs font-normal leading-none text-gray-400 dark:text-gray-500"
+    >{date}</time
+>
+<h3 class="lg:text-lg md:text-md sm:text-sm font-semibold text-violet-800 dark:text-violet-400 mt-2">
+    {title}
+</h3>
+<p class="mb-4 lg:text-base md:text-md sm:text-sm font-normal text-gray-500 dark:text-gray-200 text-pretty">
+    {description}
+</p>
+

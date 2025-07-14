@@ -1,0 +1,30 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+import { useTranslations } from "../i18n/utils";
+import { languageList } from "../i18n/ui";
+
+const currentLang = Astro.currentLocale || "es";
+
+const translate = useTranslations(
+  currentLang as keyof typeof languageList,
+);
+
+const experienceItemCount = 1;
+
+const experienceList = Array.from({ length: experienceItemCount }).map((_, i) => ({
+  title: translate(`experience.${i}.title` as string),
+  date: translate(`experience.${i}.date` as string),
+  description: translate(`experience.${i}.description` as string),
+}));
+---
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-3">
+  {
+    experienceList.map((experienceItem) => (
+      <li class="mb-10 ms-4">
+        <ExperienceItem {...experienceItem} />
+      </li>
+    ))
+  }
+</ol>
+

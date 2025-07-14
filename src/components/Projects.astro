@@ -1,0 +1,88 @@
+---
+import TailwindCSSIcon from "../components/icons/TailwindCSSIcon.astro";
+import HTMLIcon from "../components/icons/HTMLIcon.astro";
+import CSSIcon from "../components/icons/CSSIcon.astro";
+import JavaScriptIcon from "../components/icons/JavaScriptIcon.astro";
+import TypeScriptIcon from "../components/icons/TypeScriptIcon.astro";
+import AngularIcon from "../components/icons/AngularIcon.astro";
+import LaravelIcon from "../components/icons/LaravelIcon.astro";
+import { useTranslations } from "../i18n/utils";
+import { languageList } from "../i18n/ui";
+
+const currentLang = Astro.currentLocale || "es";
+const translate = useTranslations(currentLang as keyof typeof languageList);
+
+const TAGS = {
+  HTML: {
+    name: "HTML",
+    class: "bg-gray-500 dark:bg-gray-700 text-white",
+    icon: HTMLIcon,
+  },
+  CSS: {
+    name: "CSS",
+    class: "bg-gray-600 dark:bg-gray-700 text-white",
+    icon: CSSIcon,
+  },
+  JavaScript: {
+    name: "JavaScript",
+    class: "bg-[#f0db4f] dark:bg-gray-700 text-black dark:text-white",
+    icon: JavaScriptIcon,
+  },
+  TypeScript: {
+    name: "TypeScript",
+    class: "bg-[#3178c6] dark:bg-gray-700 text-white",
+    icon: TypeScriptIcon,
+  },
+  Angular: {
+    name: "Angular",
+    class: "bg-gray-500 dark:bg-gray-700 text-white",
+    icon: AngularIcon,
+  },
+  Tailwindcss: {
+    name: "Tailwind CSS",
+    class: "bg-[#3178c6] dark:bg-gray-700 text-white",
+    icon: TailwindCSSIcon,
+  },
+  Laravel: {
+    name: "Laravel",
+    class: "bg-gray-500 dark:bg-gray-700 text-white",
+    icon: LaravelIcon,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: translate("projects.0.title"),
+    description: translate("projects.0.description"),
+    link: "#",
+    github: "#",
+    image: "/projects/plantfix.png",
+    tags: [TAGS.Angular, TAGS.Laravel, TAGS.HTML, TAGS.Tailwindcss, TAGS.JavaScript, TAGS.TypeScript],
+  },
+];
+---
+
+{
+  PROJECTS.map(({ title, description, tags, image }) => (
+    <article>
+      <h3 class="lg:text-lg md:text-md sm:text-sm font-semibold text-violet-800 dark:text-violet-400 mb-2">{title}</h3>
+      <p class="lg:text-lg md:text-md sm:text-sm mb-4 text-pretty">{description}</p>
+      <ul class="flex gap-x-2 flex-row">
+        {tags.map((tag) => (
+          <li>
+            <span class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}>
+            <tag.icon class="size-4" />
+            {tag.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <img
+        class="rounded shadow-2xl shadow-white/10 mt-6 text-sm text-gray-400 text-center"
+        src={image}
+        alt={`${title}`}
+      />
+    </article>
+  ))
+}
+

@@ -1,0 +1,100 @@
+---
+import Badge from "../../components/Badge.astro";
+import Layout from "../../layouts/Layout.astro";
+import LinkedInIcon from "../../components/icons/LinkedInIcon.astro";
+import SocialPill from "../../components/icons/SocialPill.astro";
+import GitHubIcon from "../../components/icons/GitHubIcon.astro";
+import MailIcon from "../../components/icons/MailIcon.astro";
+import Experience from "../../components/Experience.astro";
+import SectionContainer from "../../components/SectionContainer.astro";
+import BriefcaseIcon from "../../components/icons/BriefcaseIcon.astro";
+import CodeIcon from "../../components/icons/CodeIcon.astro";
+import Projects from "../../components/Projects.astro";
+import ProfilePhoto from "../../components/ProfilePhoto.astro";
+---
+
+<Layout
+	title="Portfolio - Inacora"
+	description="Portfolio de Inacora Campos Alonso, desarrolladora web frontend especializada en JavaScript, TypeScript y Angular."
+>
+	<main class="px-4">
+		<SectionContainer id="about" class="py-25 pb-24">
+			<div class="flex-1 sm:flex md:hidden justify-start">
+				<ProfilePhoto />
+			</div>
+			<h1
+				class="sm:text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row pb-6 lg:pb-10 gap-x-4"
+			>
+				¡Hola! Soy Inacora <a
+					href="https://www.linkedin.com/in/inacora-campos-alonso-2a5bb7370"
+					target="_blank"
+					rel="noopener"
+					class="flex justify-center items-center"
+				>
+					<Badge>Disponible para contratar</Badge>
+				</a>
+			</h1>
+
+			<h2
+				class="sm:text-xl lg:text-2xl opacity-80 text-wrap
+			
+			max-w-[700px]"
+			>
+				<span class="text-violet-800 dark:text-violet-400">
+					Soy desarrolladora web frontend recién graduada del ciclo
+					DAW, con conocimientos en JavaScript, TypeScript y
+					Angular.
+				</span>
+				<span class="text-pink-400/60">
+					De Las Palmas de Gran Canaria, España.
+				</span>
+				<span class="opacity-75">
+					Actualmente estoy desarrollando proyectos propios mientras
+					busco mi primera oportunidad profesional como
+					desarrolladora. Me apasiona crear aplicaciones web modernas
+					y bien estructuradas, y estoy lista para aportar todo mi
+					potencial a un equipo real.
+				</span>
+			</h2>
+
+			<nav id="contact" class="flex gap-4 mt-8 flex-wrap">
+				<SocialPill
+					href="https://www.linkedin.com/in/inacora-campos-alonso-2a5bb7370"
+				>
+					<LinkedInIcon class="size-4 md:size-6" />
+					LinkedIn
+				</SocialPill>
+
+				<SocialPill href="https://github.com/Inacora-dev">
+					<GitHubIcon class="size-4 md:size-6" />
+					GitHub
+				</SocialPill>
+
+				<SocialPill href="mailto:inacora.dev@gmail.com">
+					<MailIcon class="size-4 md:size-6" />
+					inacora.dev@gmail.com
+				</SocialPill>
+			</nav>
+		</SectionContainer>
+
+		<SectionContainer id="experience">
+			<h2
+				class="lg:text-3xl md:text-2xl sm:text-xl font-semibold mb-4 flex gap-x-3 items-center"
+			>
+				<BriefcaseIcon class="lg:size-7 md:size-6 sm:size-5" />
+				Experiencia laboral
+			</h2>
+			<Experience />
+		</SectionContainer>
+
+		<SectionContainer id="projects">
+			<h2
+				class="lg:text-3xl md:text-2xl sm:text-xl font-semibold mb-4 flex gap-x-3 items-center"
+			>
+				<CodeIcon class="lg:size-7 md:size-6 sm:size-5" />
+				Proyectos personales
+			</h2>
+			<Projects />
+		</SectionContainer>
+	</main>
+</Layout>
