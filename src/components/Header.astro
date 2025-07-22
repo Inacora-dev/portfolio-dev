@@ -3,6 +3,7 @@ import ToggleSwitch from "./ToggleSwitch.astro";
 import ProfilePhoto from "./ProfilePhoto.astro";
 import { useTranslations } from "../i18n/utils";
 import { languageList } from "../i18n/ui";
+import ToggleMenuButton from "./buttons/ToggleMenuButton.astro";
 
 const currentLang = Astro.currentLocale || "es";
 
@@ -17,7 +18,7 @@ const translateLabels = useTranslations(
       <ProfilePhoto />
     </div>
 
-    <nav class="flex gap-10 text-base opacity-80">
+    <nav class="flex gap-10 text-base opacity-80 text-gray-500 dark:text-white/90">
       <a href="#top">{translateLabels("nav.home")}</a>
       <a href="#experience">{translateLabels("nav.experience")}</a>
       <a href="#projects">{translateLabels("nav.projects")}</a>
@@ -54,26 +55,14 @@ const translateLabels = useTranslations(
     <div class="flex justify-between items-center">
       <ProfilePhoto />
       <div class="flex items-center gap-4">
-        <button @click="open = !open" aria-label="Abrir menú">
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
+        <ToggleMenuButton />
+      
         <ToggleSwitch />
       </div>
     </div>
 
   <div x-show="open" x-transition class="mt-4 flex flex-col gap-4">
-    <nav class="flex flex-col items-center gap-2 text-sm opacity-80">
+    <nav class="flex flex-col items-center gap-2 text-sm opacity-80 text-gray-500 dark:text-white/90">
       <a href="#top" @click="open = false">{translateLabels("nav.home")}</a>
       <a href="#experience" @click="open = false">{translateLabels("nav.experience")}</a>
       <a href="#projects" @click="open = false">{translateLabels("nav.projects")}</a>

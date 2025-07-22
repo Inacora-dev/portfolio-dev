@@ -1,0 +1,11 @@
+---
+import ToggleMenuIcon from "../toggleMenuIcon.astro";
+---
+
+<button
+    @click="open = !open"
+    aria-label="Abrir menú"
+    class="text-gray-500 dark:text-white/90 cursor-pointer"
+>
+    <ToggleMenuIcon />
+</button>

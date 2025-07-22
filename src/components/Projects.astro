@@ -15,12 +15,12 @@ const translate = useTranslations(currentLang as keyof typeof languageList);
 const TAGS = {
   HTML: {
     name: "HTML",
-    class: "bg-gray-500 dark:bg-gray-700 text-white",
+    class: "bg-gray-500 dark:bg-gray-700 text-white dark:text-white",
     icon: HTMLIcon,
   },
   CSS: {
     name: "CSS",
-    class: "bg-gray-600 dark:bg-gray-700 text-white",
+    class: "bg-gray-600 dark:bg-gray-700 text-white dark:text-white",
     icon: CSSIcon,
   },
   JavaScript: {
@@ -30,22 +30,22 @@ const TAGS = {
   },
   TypeScript: {
     name: "TypeScript",
-    class: "bg-[#3178c6] dark:bg-gray-700 text-white",
+    class: "bg-[#3178c6] dark:bg-gray-700 text-white dark:text-white",
     icon: TypeScriptIcon,
   },
   Angular: {
     name: "Angular",
-    class: "bg-gray-500 dark:bg-gray-700 text-white",
+    class: "bg-gray-500 dark:bg-gray-700 text-white dark:text-white",
     icon: AngularIcon,
   },
   Tailwindcss: {
     name: "Tailwind CSS",
-    class: "bg-[#3178c6] dark:bg-gray-700 text-white",
+    class: "bg-[#3178c6] dark:bg-gray-700 text-white dark:text-white",
     icon: TailwindCSSIcon,
   },
   Laravel: {
     name: "Laravel",
-    class: "bg-gray-500 dark:bg-gray-700 text-white",
+    class: "bg-gray-500 dark:bg-gray-700 text-white dark:text-white",
     icon: LaravelIcon,
   },
 };
@@ -78,7 +78,7 @@ const PROJECTS = [
         <a
           href={link}
           target="_blank"
-          class="inline-block bg-violet-800 dark:bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-700 dark:hover:bg-violet-300 transition-colors"
+          class="inline-block bg-violet-800 dark:bg-violet-400 text-white dark:text-white px-4 py-2 rounded hover:bg-violet-700 dark:hover:bg-violet-300 transition-colors"
           rel="noopener noreferrer"
         >
           Ver en GitHub
