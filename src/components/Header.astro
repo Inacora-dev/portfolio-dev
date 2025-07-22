@@ -11,40 +11,93 @@ const translateLabels = useTranslations(
 );
 ---
 
-<header class="flex items-center justify-between py-5 px-8 w-full">
-  <div class="flex-1 md:flex sm:hidden justify-start">
-    <ProfilePhoto />
-  </div>
+<header class="w-full">
+  <div class="hidden md:flex items-center justify-between py-5 px-6 w-full">
+    <div class="flex justify-start">
+      <ProfilePhoto />
+    </div>
 
-  <div class="flex-1 flex justify-center lg:text-base md:text-sm sm:text-xs">
-    <nav class="flex flex-row gap-x-10 opacity-80">
+    <nav class="flex gap-10 text-base opacity-80">
       <a href="#top">{translateLabels("nav.home")}</a>
       <a href="#experience">{translateLabels("nav.experience")}</a>
       <a href="#projects">{translateLabels("nav.projects")}</a>
-      <a href="#about" class="whitespace-nowrap"
-        >{translateLabels("nav.about")}</a
-      >
+      <a href="#about" class="whitespace-nowrap">
+        {translateLabels("nav.about")}
+      </a>
       <a href="#contact">{translateLabels("nav.contact")}</a>
     </nav>
+
+    <div class="flex items-center gap-4">
+      <ol class="flex items-center text-base">
+        {
+          Object.entries(languageList).map(([key, label], index, array) => (
+            <li
+              class={
+                index !== array.length - 1
+                  ? "border-r border-gray-400 px-2"
+                  : "px-2"
+              }
+            >
+              <a href={`/${key}`}>{label}</a>
+            </li>
+          ))
+        }
+      </ol>
+      <ToggleSwitch />
+    </div>
   </div>
 
-  <div class="flex-1 flex justify-end">
-    <ol class="flex items-center mr-4 ml-8 lg:text-base md:text-sm sm:text-xs">
-      { 
-        Object.entries(languageList).map(([key, label], index, array) => (
-          <li
-            class={
-              index !== array.length - 1
-                ? "border-r border-gray-400 px-3"
-                : "px-3"
-            }
+  <div
+    x-data="{ open: false }"
+    class="flex flex-col md:hidden py-4 px-4 w-full"
+  >
+    <div class="flex justify-between items-center">
+      <ProfilePhoto />
+      <div class="flex items-center gap-4">
+        <button @click="open = !open" aria-label="Abrir menú">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
           >
-            <a href={`/${key}`}>{label}</a>
-          </li>
-        ))
-      }
-    </ol>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+        <ToggleSwitch />
+      </div>
+    </div>
 
-    <ToggleSwitch />
+  <div x-show="open" x-transition class="mt-4 flex flex-col gap-4">
+    <nav class="flex flex-col items-center gap-2 text-sm opacity-80">
+      <a href="#top" @click="open = false">{translateLabels("nav.home")}</a>
+      <a href="#experience" @click="open = false">{translateLabels("nav.experience")}</a>
+      <a href="#projects" @click="open = false">{translateLabels("nav.projects")}</a>
+      <a href="#about" @click="open = false">{translateLabels("nav.about")}</a>
+      <a href="#contact" @click="open = false">{translateLabels("nav.contact")}</a>
+    </nav>
+
+    <div class="flex justify-center mt-2">
+      <ol class="flex text-sm">
+        {
+          Object.entries(languageList).map(([key, label], index, array) => (
+            <li
+              class={
+                index !== array.length - 1
+                  ? "border-r border-gray-400 px-2"
+                  : "px-2"
+              }
+            >
+              <a href={`/${key}`}>{label}</a>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
   </div>
+</div>
 </header>

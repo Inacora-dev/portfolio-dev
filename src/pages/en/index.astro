@@ -10,18 +10,14 @@ import SectionContainer from "../../components/SectionContainer.astro";
 import BriefcaseIcon from "../../components/icons/BriefcaseIcon.astro";
 import CodeIcon from "../../components/icons/CodeIcon.astro";
 import Projects from "../../components/Projects.astro";
-import ProfilePhoto from "../../components/ProfilePhoto.astro";
 ---
 
 <Layout
 	title="Portfolio - Inacora"
 	description="Portfolio of Inacora Campos Alonso, frontend web developer specialized in JavaScript, TypeScript, and Angular."
 >
-	<main class="px-4">
+	<main class="w-full max-w-7xl mx-auto px-4">
 		<SectionContainer id="about" class="py-25 pb-24">
-			<div class="flex-1 sm:flex md:hidden justify-start">
-				<ProfilePhoto />
-			</div>
 			<h1
 				class="sm:text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row pb-6 lg:pb-10 gap-x-4"
 			>
@@ -45,10 +41,10 @@ import ProfilePhoto from "../../components/ProfilePhoto.astro";
 					DAW, with knowledge in JavaScript, TypeScript, and
 					Angular.
 				</span>
-				<span class="text-pink-400/60">
+				<span class="text-pink-400/60 dark:text-pink-400/80">
 					Based in Las Palmas de Gran Canaria, Spain.
 				</span>
-				<span class="opacity-75">
+				<span class="text-gray-800 dark:text-white">
 					I'm currently working on personal projects while looking for
 					my first professional opportunity as a developer. I'm
 					passionate about building modern, well-structured web
@@ -58,7 +54,7 @@ import ProfilePhoto from "../../components/ProfilePhoto.astro";
 				</span>
 			</h2>
 
-			<nav id="contact" class="flex gap-4 mt-8 flex-wrap">
+			<nav id="contact" class="flex gap-4 mt-8 flex-wrap text-gray-800 dark:text-white">
 				<SocialPill
 					href="https://www.linkedin.com/in/inacora-campos-alonso-2a5bb7370"
 				>
@@ -82,7 +78,7 @@ import ProfilePhoto from "../../components/ProfilePhoto.astro";
 			<h2
 				class="lg:text-3xl md:text-2xl sm:text-xl font-semibold mb-4 flex gap-x-3 items-center"
 			>
-				<BriefcaseIcon class="lg:size-7 md:size-6 sm:size-5" />
+				<BriefcaseIcon class="lg:size-7 md:size-6 sm:size-5 text-gray-800 dark:text-white" />
 				Work Experience
 			</h2>
 			<Experience />
@@ -92,7 +88,7 @@ import ProfilePhoto from "../../components/ProfilePhoto.astro";
 			<h2
 				class="lg:text-3xl md:text-2xl sm:text-xl font-semibold mb-4 flex gap-x-3 items-center"
 			>
-				<CodeIcon class="lg:size-7 md:size-6 sm:size-5" />
+				<CodeIcon class="lg:size-7 md:size-6 sm:size-5 text-gray-800 dark:text-white" />
 				Personal Projects
 			</h2>
 			<Projects />

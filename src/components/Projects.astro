@@ -54,25 +54,47 @@ const PROJECTS = [
   {
     title: translate("projects.0.title"),
     description: translate("projects.0.description"),
-    link: "#",
-    github: "#",
+    link: "https://github.com/Inacora-dev/PlantfixFrontend",
     image: "/projects/plantfix.png",
-    tags: [TAGS.Angular, TAGS.Laravel, TAGS.HTML, TAGS.Tailwindcss, TAGS.JavaScript, TAGS.TypeScript],
+    tags: [
+      TAGS.Angular,
+      TAGS.Laravel,
+      TAGS.HTML,
+      TAGS.Tailwindcss,
+      TAGS.JavaScript,
+      TAGS.TypeScript,
+    ],
   },
 ];
 ---
 
 {
-  PROJECTS.map(({ title, description, tags, image }) => (
+  PROJECTS.map(({ title, description, tags, image, link }) => (
     <article>
-      <h3 class="lg:text-lg md:text-md sm:text-sm font-semibold text-violet-800 dark:text-violet-400 mb-2">{title}</h3>
-      <p class="lg:text-lg md:text-md sm:text-sm mb-4 text-pretty">{description}</p>
-      <ul class="flex gap-x-2 flex-row">
+      <div class="flex flex-row items-center justify-between mb-4">
+        <h3 class="lg:text-lg md:text-md sm:text-sm font-semibold text-violet-800 dark:text-violet-400">
+          {title}
+        </h3>
+        <a
+          href={link}
+          target="_blank"
+          class="inline-block bg-violet-800 dark:bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-700 dark:hover:bg-violet-300 transition-colors"
+          rel="noopener noreferrer"
+        >
+          Ver en GitHub
+        </a>
+      </div> 
+      <p class="text-gray-800 dark:text-white lg:text-lg md:text-md sm:text-sm mb-4 text-pretty">
+        {description}
+      </p>
+      <ul class="flex gap-x-2 flex-row flex-wrap gap-y-4">
         {tags.map((tag) => (
           <li>
-            <span class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}>
-            <tag.icon class="size-4" />
-            {tag.name}
+            <span
+              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
+            >
+              <tag.icon class="size-4" />
+              {tag.name}
             </span>
           </li>
         ))}
@@ -85,4 +107,3 @@ const PROJECTS = [
     </article>
   ))
 }
-

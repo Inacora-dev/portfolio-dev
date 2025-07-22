@@ -2,6 +2,7 @@
 import "@fontsource-variable/onest";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import "../styles/global.css";
 
 interface Props {
 	title: string;
@@ -19,7 +20,9 @@ const currentLang = Astro.currentLocale || "es";
 			(function () {
 				try {
 					var theme = localStorage.getItem("theme");
-					var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+					var prefersDark = window.matchMedia(
+						"(prefers-color-scheme: dark)",
+					).matches;
 					if (theme === "dark" || (!theme && prefersDark)) {
 						document.documentElement.classList.add("dark");
 					}
@@ -27,32 +30,39 @@ const currentLang = Astro.currentLocale || "es";
 			})();
 		</script>
 
+		<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, user-scalable=no"
+		/>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<link rel="stylesheet" href="/src/styles/global.css" />
 	</head>
 
 	<body class="min-h-screen relative">
 		<div
-			class="pointer-events-none fixed inset-0 -z-10 h-full w-full
-			bg-white
-			bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)]
-			bg-[size:6rem_4rem]
-			dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_0%,#000_0%,#111_100%)]
-			dark:bg-black"
+			class="absolute top-0 z-[-2] h-full w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] dark:block hidden"
 		>
-			<div
-				class="absolute inset-0 bg-[radial-gradient(circle_800px_at_100%_200px,#d5c5ff,transparent)] dark:bg-none"
-			></div>
 		</div>
 
-		<Header />
-		<slot />
-		<Footer />
+		<div
+			class="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem] dark:hidden"
+		>
+			<div
+				class="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_800px_at_100%_200px,#d5c5ff,transparent)]"
+			>
+			</div>
+		</div>
+
+		<div class="w-full max-w-7xl mx-auto px-4">
+			<Header />
+			<slot />
+			<Footer />
+		</div>
 	</body>
 </html>
 
@@ -72,7 +82,6 @@ const currentLang = Astro.currentLocale || "es";
 
 	body {
 		display: flex;
-		justify-content: center;
 		min-height: 100vh;
 		flex-direction: column;
 	}
