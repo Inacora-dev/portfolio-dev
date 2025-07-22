@@ -18,7 +18,7 @@ const translateLabels = useTranslations(
       <ProfilePhoto />
     </div>
 
-    <nav class="flex gap-10 text-base opacity-80 text-gray-500 dark:text-white/90">
+    <nav class="flex gap-10 text-base opacity-80 text-gray-700 dark:text-white/90">
       <a href="#top">{translateLabels("nav.home")}</a>
       <a href="#experience">{translateLabels("nav.experience")}</a>
       <a href="#projects">{translateLabels("nav.projects")}</a>
@@ -29,7 +29,7 @@ const translateLabels = useTranslations(
     </nav>
 
     <div class="flex items-center gap-4">
-      <ol class="flex items-center text-base">
+      <ol class="flex items-center text-base text-gray-700 dark:text-white/90">
         {
           Object.entries(languageList).map(([key, label], index, array) => (
             <li
@@ -62,7 +62,7 @@ const translateLabels = useTranslations(
     </div>
 
   <div x-show="open" x-transition class="mt-4 flex flex-col gap-4">
-    <nav class="flex flex-col items-center gap-2 text-sm opacity-80 text-gray-500 dark:text-white/90">
+    <nav class="flex flex-col items-center gap-2 text-sm opacity-80 text-gray-700 dark:text-white/90">
       <a href="#top" @click="open = false">{translateLabels("nav.home")}</a>
       <a href="#experience" @click="open = false">{translateLabels("nav.experience")}</a>
       <a href="#projects" @click="open = false">{translateLabels("nav.projects")}</a>
@@ -71,7 +71,7 @@ const translateLabels = useTranslations(
     </nav>
 
     <div class="flex justify-center mt-2">
-      <ol class="flex text-sm">
+      <ol class="flex text-sm text-gray-700 dark:text-white/90">
         {
           Object.entries(languageList).map(([key, label], index, array) => (
             <li

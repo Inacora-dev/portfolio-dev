@@ -11,16 +11,16 @@ import MoonIcon from "./icons/MoonIcon.astro";
     <input id="theme-toggle" type="checkbox" class="sr-only peer" />
 
     <div
-      class="relative w-10 h-6 sm:w-8 sm:h-8 md:w-14 md:h-8 rounded-full
+      class="relative w-8 h-8 sm:w-8 sm:h-8 md:w-14 md:h-8 rounded-full
          bg-gray-200 dark:bg-gray-800
          peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-violet-500
          transition-colors
-         peer-checked:[&>span]:translate-x-4 md:peer-checked:[&>span]:translate-x-6"
+         md:peer-checked:[&>span]:translate-x-6"
     >
       <span
-        class="absolute left-[2px] sm:left-[4px] inset-y-0 my-auto
+        class="absolute left-[4px] inset-y-0 my-auto
            flex items-center justify-center
-           w-4 h-4 sm:w-6 sm:h-6 md:w-6 md:h-6 rounded-full
+           w-6 h-6 rounded-full
            bg-violet-800 dark:bg-violet-400
            transition-transform"
       >
