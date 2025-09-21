@@ -6,12 +6,12 @@ import JavaScriptIcon from "../components/icons/JavaScriptIcon.astro";
 import TypeScriptIcon from "../components/icons/TypeScriptIcon.astro";
 import AngularIcon from "../components/icons/AngularIcon.astro";
 import LaravelIcon from "../components/icons/LaravelIcon.astro";
+import ReactIcon from "../components/icons/ReactIcon.astro";
 import { useTranslations } from "../i18n/utils";
 import { languageList } from "../i18n/ui";
 
 const currentLang = Astro.currentLocale || "es";
 const translate = useTranslations(currentLang as keyof typeof languageList);
-
 const TAGS = {
   HTML: {
     name: "HTML",
@@ -40,7 +40,7 @@ const TAGS = {
   },
   Tailwindcss: {
     name: "Tailwind CSS",
-    class: "bg-[#3178c6] dark:bg-gray-700 text-white dark:text-white",
+    class: "bg-gray-500 dark:bg-gray-700 text-white dark:text-white",
     icon: TailwindCSSIcon,
   },
   Laravel: {
@@ -48,13 +48,18 @@ const TAGS = {
     class: "bg-gray-500 dark:bg-gray-700 text-white dark:text-white",
     icon: LaravelIcon,
   },
+  React: {
+    name: "React",
+    class: "bg-gray-500 dark:bg-gray-700 text-white dark:text-white",
+    icon: ReactIcon,
+  },
 };
 
 const PROJECTS = [
   {
     title: translate("projects.0.title"),
     description: translate("projects.0.description"),
-    link: "https://github.com/Inacora-dev/PlantfixFrontend",
+    github: "https://github.com/Inacora-dev/PlantfixFrontend",
     image: "/projects/plantfix.png",
     tags: [
       TAGS.Angular,
@@ -65,24 +70,48 @@ const PROJECTS = [
       TAGS.TypeScript,
     ],
   },
+  {
+    title: translate("projects.1.title"),
+    description: translate("projects.1.description"),
+    github: "https://github.com/Inacora-dev/CineNow",
+    image: "/projects/cinenow.png", 
+    tags: [
+      TAGS.React,
+      TAGS.HTML,
+      TAGS.CSS,
+    ],
+    link: "https://cinenowmovies.netlify.app/", 
+  },
 ];
 ---
 
 {
-  PROJECTS.map(({ title, description, tags, image, link }) => (
+  PROJECTS.map(({ title, description, tags, image, github, link }) => (
     <article>
       <div class="flex flex-row items-center justify-between mb-4">
         <h3 class="lg:text-lg md:text-md sm:text-sm font-semibold text-violet-800 dark:text-violet-400">
           {title}
         </h3>
-        <a
-          href={link}
-          target="_blank"
-          class="inline-block bg-violet-800 dark:bg-violet-400 text-white dark:text-white px-4 py-2 rounded hover:bg-violet-700 dark:hover:bg-violet-300 transition-colors"
-          rel="noopener noreferrer"
-        >
-          Ver en GitHub
-        </a>
+        <div class="flex gap-2">
+          <a
+            href={github}
+            target="_blank"
+            class="inline-block bg-violet-800 dark:bg-violet-400 text-white dark:text-white px-4 py-2 rounded hover:bg-violet-700 dark:hover:bg-violet-300 transition-colors"
+            rel="noopener noreferrer"
+          >
+            {translate("projects.github")}
+          </a>
+          {link && (
+            <a
+              href={link}
+              target="_blank"
+              class="inline-block bg-pink-400/80 dark:bg-pink-400 text-white dark:text-white px-4 py-2 rounded hover:bg-pink-400/60 dark:hover:bg-pink-400/80 transition-colors"
+              rel="noopener noreferrer"
+            >
+              {translate("projects.link")}
+            </a>
+          )}
+        </div>
       </div> 
       <p class="text-gray-800 dark:text-white lg:text-lg md:text-md sm:text-sm mb-4 text-pretty">
         {description}
@@ -100,7 +129,7 @@ const PROJECTS = [
         ))}
       </ul>
       <img
-        class="rounded shadow-2xl shadow-white/10 mt-6 text-sm text-gray-400 text-center"
+        class="rounded shadow-2xl shadow-white/10 mt-6 mb-10 text-sm text-gray-400 text-center"
         src={image}
         alt={`${title}`}
       />
